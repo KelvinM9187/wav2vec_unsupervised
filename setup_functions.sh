@@ -11,13 +11,11 @@ set -x                       # Print each command for debugging
 # Set these variables according to your environment
 
 # Main directories
-INSTALL_ROOT="$HOME/unsupervised_wav"
+INSTALL_ROOT="$HOME/wav2vec_unsupervised"
 FAIRSEQ_ROOT="$INSTALL_ROOT/fairseq_"
 KENLM_ROOT="$INSTALL_ROOT/kenlm"
 VENV_PATH="$INSTALL_ROOT/venv"
-# KALDI_ROOT="$INSTALL_ROOT/pykaldi/tools/kaldi"
 RVADFAST_ROOT="$INSTALL_ROOT/rVADfast"
-# PYKALDI_ROOT="$INSTALL_ROOT/pykaldi"
 FLASHLIGHT_SEQ_ROOT="$INSTALL_ROOT/sequence"
 
 
@@ -98,7 +96,6 @@ basic_dependencies(){
     # Install Python 3, pip, and essential development packages (for compiling C extensions)
     sudo apt-get install -y python3 python3-pip python3-dev build-essential 
     sudo apt-get install autoconf automake cmake curl g++ git graphviz libatlas3-base libtool make pkg-config subversion unzip wget zlib1g-dev gfortran
-    # sudo apt-get install python3.12-venv
     sudo apt update
     sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev wget curl
     sudo apt install software-properties-common
@@ -123,7 +120,7 @@ cuda_installation() {
         export PATH="/usr/local/cuda-$CUDA/bin:$PATH"
         export LD_LIBRARY_PATH="/usr/local/cuda-$CUDA/lib64:$LD_LIBRARY_PATH"
 
-source ~/.bashrc
+        source ~/.bashrc
 
         echo "CUDA environment variables configured."
     else
